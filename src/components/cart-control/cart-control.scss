@@ -1,0 +1,31 @@
+.cart-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .counter {
+        margin-bottom: 5px;
+
+        button {
+            border: none;
+            outline: none;
+            padding: 5px;
+            background-color: aliceblue;
+            cursor: pointer;
+        }
+
+        p {
+            display: inline-block;
+            margin: 0 10px;
+        }
+    }
+
+    button {
+        border: none;
+        outline: none;
+        background-color: white;
+        cursor: pointer;
+        color: var(--primary-color);
+        text-decoration: underline;
+    }
+}

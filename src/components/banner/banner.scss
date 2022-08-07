@@ -1,0 +1,108 @@
+@mixin ripped-effect($rhythm, $depth) {
+    $tip: calc(100% - #{$depth});
+    $ripped: '100% 0, 100% #{$tip}, ';
+    $end: 100 - $rhythm;
+    $isPrevTip: true;
+  
+    @for $i from $end through 1 {
+      @if $i % $rhythm == 0 {
+        @if $isPrevTip {
+          $ripped: #{$ripped + $i + '% 100%, '};
+          $isPrevTip: false;
+        } @else {
+          $ripped: #{$ripped + $i + '% #{$tip}, '};
+          $isPrevTip: true;
+        }
+      }
+    }
+  
+    $ripped: #{$ripped + '0 #{$tip}, 0 0'};
+
+    clip-path: polygon($ripped);
+}
+
+.banner {
+    width: 100%;
+    padding: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white ;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.05);
+    @include ripped-effect(2, 6px);
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+
+    .banner-left {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+        img {
+            width: 325px;
+            max-height: 100%;
+        }
+
+        @media screen and (max-width: 900px) {
+          img {
+            width: 275px;
+          }
+        }
+
+        @media screen and (max-width: 768px) {
+          img:nth-child(2) {
+            display: none;
+          }
+        }
+    }
+    
+    .banner-right {
+        flex: 1.5;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        text-align: center;
+
+        padding: 20px 60px;
+
+        .headline {
+            font-size: 80px;
+            font-weight: 600;
+        }
+
+        .subtext {
+            width: 90%;
+            margin: 25px 0;
+        }
+
+        @media screen and (max-width: 1024px) {
+          .headline {
+            font-size: 64px;
+          }
+        }
+
+        @media screen and (max-width: 900px) {
+          padding: 20px 30px;
+
+          .headline {
+            font-size: 56px;
+          }
+        }
+
+        @media screen and (max-width: 425px) {
+          .headline {
+            font-size: 48px;
+          }
+        }
+    }
+}
+

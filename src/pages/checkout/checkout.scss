@@ -1,0 +1,45 @@
+.checkoutpage {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--background-color);
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    
+    .checkout-details {
+        width: 768px;
+        margin: 30px;
+        padding: 20px;
+        background-color: white;
+
+        .headline {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--background-color);
+        }
+
+        .subtotal {
+            display: flex;
+            justify-content: flex-end;
+            flex-direction: column;
+            margin-top: 10px;
+            text-align: end;
+
+            span {
+                margin-left: 8px;
+                color: var(--primary-color);
+            }
+
+            .pay-now-btn {
+               min-width: 150px;
+               margin-top: 10px;
+               align-self: flex-end;
+            }
+        }
+
+        @media screen and (max-width: 425px) {
+            margin: 20px;
+        }
+    }
+}
